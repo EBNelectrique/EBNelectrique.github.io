@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pokédex</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .arrow {
+      width: 50px;
+      height: 50px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      line-height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      margin-bottom: 3vh;
+    }
+
+    .arrow:hover {
+      background-color: #777;
+    }
+
+
+
+    h1 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-gap: 10px;
+      justify-items: center;
+    }
+
+    .image-box {
+      position: relative;
+      width: 100%;
+      height: auto;
+      max-width: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      transition: box-shadow 0.3s;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .image-box:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-box.loaded {
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    .pokemon-number {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .image-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .image-box:hover::before {
+      opacity: 1;
+    }
+
+    /* Media query to adjust number of images per row based on screen width */
+    @media screen and (min-width: 500px) {
+      .image-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @media screen and (min-width: 800px) {
+      .image-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    /* Add more media queries for other screen sizes as needed */
+  </style>
+</head>
+
+<body>
+  <h1>Pokédex Data</h1>
+
+  <div class="navigation">
+    <div class="arrow" id="leftArrow">&larr;</div>
+    <div class="arrow" id="rightArrow">&rarr;</div>
+  </div>
+  <div class="image-grid" id="image-grid">
+    <!-- Images will be added dynamically using JavaScript -->
+  </div>
+
+  <script>
+    const grid = document.getElementById("image-grid");
+    let currentPageIndex = 0;
+
+    function loadImages() {
+      const start = 1;
+      const end = 1010;
+
+      for (let i = start; i <= end; i++) {
+        const imageBox = document.createElement("div");
+        imageBox.classList.add("image-box");
+        const img = document.createElement("img");
+        img.onload = () => imageBox.classList.add("loaded");
+        img.src = `images/${String(i).padStart(3, "0")}.png`;
+        imageBox.appendChild(img);
+
+        const pokemonNumber = document.createElement("span");
+        pokemonNumber.classList.add("pokemon-number");
+        pokemonNumber.textContent = `#${i}`;
+        imageBox.appendChild(pokemonNumber);
+
+        imageBox.addEventListener("click", () => {
+          const pokemonName = `Pokémon ${i}`;
+          const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(
+            pokemonName
+          )}&tbm=isch`;
+          window.open(googleSearchURL, "_blank");
+        });
+
+        grid.appendChild(imageBox);
+      }
+    }
+
+    function showPage(pageIndex) {
+      const pages = document.querySelectorAll(".image-box");
+      pages.forEach((page, index) => {
+        page.style.display = index === pageIndex ? "block" : "none";
+      });
+    }
+
+    function showNextPage() {
+      if (currentPageIndex < grid.children.length - 1) {
+        currentPageIndex++;
+        showPage(currentPageIndex);
+      }
+    }
+
+    function showPreviousPage() {
+      if (currentPageIndex > 0) {
+        currentPageIndex--;
+        showPage(currentPageIndex);
+      }
+    }
+
+    const leftArrow = document.getElementById("leftArrow");
+    const rightArrow = document.getElementById("rightArrow");
+
+    leftArrow.addEventListener("click", showPreviousPage);
+    rightArrow.addEventListener("click", showNextPage);
+
+    loadImages();
+    showPage(currentPageIndex);
+  </script>
+</body>
+
+</html>
