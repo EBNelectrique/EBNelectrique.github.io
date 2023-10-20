@@ -108,6 +108,14 @@
         </ul>
     </nav>
 
+        <div class="theme-selector">
+        <label for="theme">Choose a theme:</label>
+        <select id="theme" onchange="changeTheme(this.value)">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+
     
     <!-- Other content -->
 
@@ -167,6 +175,14 @@ EBN électrique est votre partenaire de choix pour vous conseiller et mener à t
         <img src="IMG/1_securitepublique.png" alt="Securite Publique">
     </footer>
 
+
+
+    <script>
+        function changeTheme(theme) {
+            const themeStyle = document.getElementById('theme-style');
+            themeStyle.href = theme === 'dark' ? 'dark-theme.css' : 'light-theme.css';
+        }
+    </script>
     
 </body>
 </html>
