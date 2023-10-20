@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
     <title>EBN électrique</title>
-    
-    
-<style>
+    <style>
+
+        
         .footer {
             display: flex;
             justify-content: space-between;
@@ -38,21 +38,115 @@
         .contact p {
             margin: 10px 0;
         }
+
+        
+        a {
+            text-decoration: none;
+            color: #333; /* Change this color to your preferred link color */
+        }
+
+
     
+                /* Adjust the navigation bar to fill the screen width */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #f2f2f2;
+            border-bottom: 2px solid #ddd;
+            width: 100%;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            display: block;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        nav img {
+            max-height: 40px; /* Adjust the height as needed */
+            width: auto;
+        }
+    
+       ul {
+            list-style-type: none;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+           .footer img {
+            width: calc(100% / 8); 
+            max-width: 200px; /* Adjust the max-width to your preference */
+            height: auto;
+        }
+
+
+        .contact {
+            
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .contact img {
+            width: 15vw; 
+            height: auto;
+        }
+
+        .contact p {
+            margin: 10px 0;
+        }
+
+ .content-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text-container {
+            width: 50%;
+        }
+
+        .image-container {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
-    
-    
     
 </head>
 <body>
     <nav>
         <ul>
+            <li> <img src="IMG/5.png" alt="logo EBN"> </li>
             <li><a href="/">Accueil</a></li>
             <li><a href="/about">À propos</a></li>
             <li><a href="/project">Nos projet</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>
+    
 
     <div class="content-section">
         <div class="image-container">
@@ -123,21 +217,21 @@ Entrée d’une capacité de 60 A et plus à 347/600 V</p>
             <p>Nous vous offrons une expertise pour l’installation de tous types de planchers chauffants. Nos électriciens pourront vous conseiller sur le système approprié et sur tous les aspects électriques selon le contexte d’utilisation, la grandeur des pièces et le coût énergétique de votre plancher chauffant.</p>
         </div>
     </div>
-    
-    
+
+
     
     <section class="contact">
         <h2>Pour nous contacter...</h2>
         <img src="IMG/4.png" alt="clock">
         <p>Lundi - Vendredi: 07.00 - 17.00</p>
 
-        <img src="IMG/3_phone.png" alt="phone">
+        <img src="IMG/3_phone.png" alt="phone:(819) 808-7468">
         <p>(819) 808-7468</p>
 
-        <img src="IMG/3_mail.png" alt="email us">
+        <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!"><img src="IMG/3_mail.png" alt="email us"></a>
         <p><a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!">nbedard@ebnelectrique.com</a></p>
 
-        <img src="IMG/3_facebook.png" href="https://www.facebook.com/profile.php?id=100083063842596" alt="Facebook logo">
+        <a href="https://www.facebook.com/profile.php?id=100083063842596"><img src="IMG/3_facebook.png" alt="Facebook logo"></a>
         <p><a href="https://www.facebook.com/profile.php?id=100083063842596">Facebook</a></p>
     </section>
     
@@ -152,7 +246,11 @@ Entrée d’une capacité de 60 A et plus à 347/600 V</p>
         <img src="IMG/1_securitepublique.png" alt="Securite Publique">
     </footer>
 
-    
-    
+
 </body>
 </html>
+
+
+
+
+
