@@ -108,9 +108,9 @@
         </ul>
     </nav>
 
-        <div class="theme-selector">
-        <label for="theme">Choose a theme:</label>
-        <select id="theme" onchange="changeTheme(this.value)">
+    <div>
+        <label for="themeSelect">Select theme:</label>
+        <select name="themeSelect" id="themeSelect" onchange="toggleTheme()">
             <option value="light">Light</option>
             <option value="dark">Dark</option>
         </select>
@@ -177,11 +177,43 @@ EBN électrique est votre partenaire de choix pour vous conseiller et mener à t
 
 
 
-    <script>
-        function changeTheme(theme) {
-            const themeStyle = document.getElementById('theme-style');
-            themeStyle.href = theme === 'dark' ? 'dark-theme.css' : 'light-theme.css';
+<script>
+        function setTheme(themeName) {
+            document.getElementById('theme-style').textContent = themeName === 'light' ? 
+                `
+                /* Your light theme CSS here */
+                body {
+                    background-color: #f9f9f9;
+                    color: #333;
+                }
+                /* Your other CSS styles here */
+                /* ... */
+                `
+                : 
+                `
+                /* Your dark theme CSS here */
+                body {
+                    background-color: #333;
+                    color: #f9f9f9;
+                }
+                /* Your other CSS styles here */
+                /* ... */
+                `;
+            localStorage.setItem('theme', themeName);
         }
+
+        function toggleTheme() {
+            const theme = localStorage.getItem('theme') || 'light';
+            if (theme === 'light') {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        }
+
+        // Apply the saved theme on initial load
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
     </script>
     
 </body>
