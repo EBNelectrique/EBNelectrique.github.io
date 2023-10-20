@@ -9,6 +9,23 @@
     
 <style>
 
+        :root {
+            --text-color: #333;
+            --background-color: #f2f2f2;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Dark theme */
+        body.dark-mode {
+            --text-color: #f2f2f2;
+            --background-color: #333;
+        }
+    
          /* Navigation Menu Styles */
         nav ul {
             list-style-type: none;
@@ -167,6 +184,21 @@ EBN électrique est votre partenaire de choix pour vous conseiller et mener à t
         <img src="IMG/1_securitepublique.png" alt="Securite Publique">
     </footer>
 
+     <script>
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
     
 </body>
 </html>
