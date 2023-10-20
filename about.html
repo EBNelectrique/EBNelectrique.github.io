@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EBN électrique</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Index</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/project">Project</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/7_logo.png" alt="Image1">
+        </div>
+        <div class="text-container">
+            <h2>Appareils de chauffage</h2>
+            <p>Plusieurs types d’appareils de chauffage électrique sont en vente et ceux-ci sont offerts dans une grande variété de couleurs afin qu’ils se fondent dans le décor de votre résidence ou de votre commerce.Noux offrons: plinthe chauffante conventionnelle, haut de gamme et compacte</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/7_logo.png" alt="Image2">
+        </div>
+        <div class="text-container">
+            <h2>Entrées électriques et panneaux</h2>
+            <p>Remplacement de panneau
+Entrée électrique aérienne
+Entrée électrique aérosouterraine
+Installation souterraine
+Entrée électrique temporaire
+Entrée d’une capacité de 200 A à 120/240 V
+Entrée d’une capacité de 320 A à 120/240 V
+Entrée d’une capacité de 400 A et plus à 120/240 V
+Entrée d’une capacité de 60 A et plus à 347/600 V</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/7_logo.png" alt="Image3">
+        </div>
+        <div class="text-container">
+            <h2>Génératrices</h2>
+            <p>Depuis quelques années, pour de nombreuses raisons, les pannes de courant sont de plus en plus fréquentes, et ce, même si Hydro-Québec s’efforce d’entretenir son réseau. Elles sont souvent causées par de grands vents, la neige ou le verglas. Pour parer à la situation, nous vous offrons des systèmes complets en fournitures et raccordements de groupes électrogènes.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/7_logo.png" alt="Image4">
+        </div>
+        <div class="text-container">
+            <h2>Raccordements divers</h2>
+            <p>Nous effectuons les raccordements pour les Spas, les appareils à air conditionné, les thermopompes, les piscines, les fournaises, les bouillottes de plancher chauffant, les chauffe-eau à la demande ou les bornes de recharge pour véhicule électrique qui sont généralement fournis par d’autres quarts de métier.</p>
+        </div>
+    </div>
+
+        <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/7_logo.png" alt="Image4">
+        </div>
+        <div class="text-container">
+            <h2>Systèmes d’éclairage</h2>
+            <p>L’éclairage peut rehausser l’image et la valeur de votre maison ou de votre commerce, selon l’emplacement, le type d’éclairage (ampoule) ou le type de luminaire choisi. Demandez conseil à Millette Électricien inc. pour tous vos projets.</p>
+        </div>
+    </div>
+    
+    
+    
+        <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/7_logo.png" alt="Image4">
+        </div>
+        <div class="text-container">
+            <h2>Installation de plancher chauffant (radiant)</h2>
+            <p>Nous vous offrons une expertise pour l’installation de tous types de planchers chauffants. Nos électriciens pourront vous conseiller sur le système approprié et sur tous les aspects électriques selon le contexte d’utilisation, la grandeur des pièces et le coût énergétique de votre plancher chauffant.</p>
+        </div>
+    </div>
+    
+    
+     <!-- Image container for horizontal scroll -->
+    <div class="image-container">
+        <!-- JavaScript will populate this section -->
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // JavaScript to dynamically add images to the horizontal scroll container
+        const imageContainer = document.querySelector('.image-container');
+        const imagePaths = ['1_CCQ.jpg', '1_CMEQ.jpg', '1_csst.jpg', '1_HydroQc.jpg', '1_regiebatiment.jpg', '1_securitepublique.jpg'];
+
+        imagePaths.forEach(imagePath => {
+            const img = document.createElement('img');
+            img.src = 'IMG/' + imagePath;
+            img.alt = 'Image';
+            imageContainer.appendChild(img);
+        });
+    </script>
+</body>
+</html>
