@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <title>EBN électrique</title>
+    <style>
+        
+        .greyback {
+        background-color: #f2f2f2;
+            
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333; /* Change this color to your preferred link color */
+        }
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    list-style-type: none;
+}
+
+.navbar li {
+    display: flex;
+    align-items: center;
+}
+
+.navbar p, .navbar a {
+    margin: 0;
+    padding: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.navbar img {
+    max-height: 30px;
+    max-width: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar li {
+        margin: 5px 0;
+    }
+}
+
+        
+    
+    
+       ul {
+            list-style-type: none;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+           .footer img {
+            width: calc(100% / 8); 
+            max-width: 200px; /* Adjust the max-width to your preference */
+            height: auto;
+        }
+
+
+        .contact {
+            
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .contact img {
+            width: 15vw; 
+            height: auto;
+        }
+
+        .contact p {
+            margin: 10px 0;
+        }
+
+ .content-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.text-container {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    max-width: 50%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+}
+
+.text-container h2 {
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+    }
+
+    .text-container {
+        position: static;
+        max-width: 100%;
+        transform: none;
+        margin-top: 20px;
+        right: auto;
+    }
+}
+
+
+        
+        .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tile {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tile img {
+    width: 100%;
+    height: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+        
+    
+        
+        
+        
+        
+        
+        
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    border: 0;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form textarea {
+    height: 150px;
+}
+
+form input[type="file"] {
+    margin-bottom: 20px;
+}
+
+form input[type="submit"] {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #ddd;
+}
+
+        
+        
+        
+        
+        
+    </style>
+    
+</head>
+<body>
+
+    
+<nav>
+    <ul class="navbar">
+        <li>
+            <p>Lundi - Vendredi: 07.00 - 17.00</p>
+        </li>
+        <li>
+            <a href="tel:8198087468">
+                <img src="IMG/3_phone.png" alt="phone:(819) 808-7468">
+            </a>
+            <p>(819) 808-7468</p>
+        </li>
+        <li>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!">
+                <img src="IMG/3_mail.png" alt="email us">
+            </a>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!">nbedard@ebnelectrique.com</a>
+        </li>
+        <li>
+            <img src="IMG/EBN_02.png" alt="logo EBN">
+        </li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/contact" style="color:darkseagreen">Contact</a></li>
+    </ul>
+</nav>
+
+
+    <br><br>
+    <h1>Contact Us</h1>
+
+<!-- Google Maps Location -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11063.8142896469!2d-74.5159533!3d46.1118321!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccf73032ffa1df7%3A0x2f4b58872120408a!2sEBN%20%C3%89lectrique%20inc.!5e0!3m2!1sen!2sca!4v1698505591599!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<!-- Contact Form -->
+<form action="mailto:nbedard@ebnelectrique.com" method="post" enctype="text/plain">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+    <label for="file">Upload Plan:</label><br>
+    <input type="file" id="file" name="file"><br><br>
+    <input type="submit" value="Submit">
+</form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="greyback">
+
+        <footer class="footer">
+        <img src="IMG/1_CCQ.png" alt="CCQ">
+        <img src="IMG/1_CMEQ.png" alt="CMEQ">
+        <img src="IMG/1_csst.png" alt="CSST">
+        <img src="IMG/1_HydroQc.png" alt="HydroQc">
+        <img src="IMG/1_regiebatiment.png" alt="Regie Batiment">
+        <img src="IMG/1_securitepublique.png" alt="Securite Publique">
+    </footer>
+        
+    <footer class="footer" style="text-align: center;">
+    <img src="IMG/EBN_02.png" alt="logo EBN" style="display: block; margin: auto;">
+</footer>
+
+    
+        
+            <ul class="navbar">
+        <li>
+            <p>Lundi - Vendredi: 07.00 - 17.00</p>
+        </li>
+        <li>
+            <a href="tel:8198087468">
+                <img src="IMG/3_phone.png" alt="phone:(819) 808-7468">
+            </a>
+            <p>(819) 808-7468</p>
+        </li>
+        <li>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!">
+                <img src="IMG/3_mail.png" alt="email us">
+            </a>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!">nbedard@ebnelectrique.com</a>
+        </li>
+        <li>
+            <img src="IMG/EBN_02.png" alt="logo EBN">
+        </li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/contact" style="color:darkseagreen">Contact</a></li>
+    </ul>
+        
+    </div>
+    
+    
+    <script>
+        // Get the modal
+var modal = document.querySelector('.modal');
+
+// Get the <span> element that closes the modal
+var span = document.querySelector('.close');
+
+// Function to open the modal
+function openModal() {
+    modal.style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// When the user clicks on a tile, open the modal
+var tiles = document.querySelectorAll('.tile');
+tiles.forEach(function(tile) {
+    tile.addEventListener('click', openModal);
+});
+
+// When the user clicks on <span> (x), close the modal
+span.addEventListener('click', closeModal);
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+        
+    </script>
+    
+    
+    
+
+</body>
+</html>
