@@ -242,6 +242,49 @@
                      overflow: auto;
                 }
 
+.img-overlap {
+    position: relative;
+    width: 100%; /* Make it responsive to the container width */
+    max-width: 400px; /* Set a maximum width to control the size */
+    margin: 0 auto; /* Center the div */
+    padding-bottom: 650px; /* Add padding to the bottom to create space for the next element */
+
+}
+
+.img-overlap img {
+    position: absolute;
+    width: 100%; /* Make the images responsive */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 400px; /* Set a maximum width for the images */
+}
+
+.img-overlap img:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+
+.img-overlap img:nth-child(2) {
+    top: 100px;
+    left: 100px;
+}
+
+.img-overlap img:nth-child(3) {
+    top: 250px;
+    left: 180px;
+}
+
+@media (max-width: 768px) {
+    .img-overlap {
+        max-width: 90%; /* Adjust the size for smaller screens */
+    }
+
+    .img-overlap img {
+        max-width: 90%; /* Adjust the image size for smaller screens */
+    }
+}
+
+
+
 
 
         
@@ -359,6 +402,16 @@ function toggleTheme() {
     </a>
 </div>
 
+    
+<div class="content-section img-overlap">
+    <img src="IMG/IMG01.jpeg" alt="Image 1">
+    <img src="IMG/IMG02.jpeg" alt="Image 2">
+    <img src="IMG/IMG03.jpeg" alt="Image 3">
+</div>
+
+
+    
+    
     
     
 <br><br>
