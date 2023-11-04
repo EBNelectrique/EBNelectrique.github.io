@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="icon" href="IMG/EBN_02.png" type="image/png">
+    <title>EBN électrique</title>
+    <style>
+
+        
+                        a {
+                            text-decoration: none;
+                            background-color: transparent;
+                            color: #000;
+                        }
+        
+                        .dark-theme{
+                            background-color: #121212;
+                            color: #333333;
+                        }
+
+                        .light-theme{
+                            background-color: #fff;
+                            color: #000;
+                        }
+
+
+                        /* Light Theme */
+                        .light-link {
+                            color: #333; /* Add the desired text color for the light theme */
+                            background-color: transparent; /* Add the desired background color for the light theme */
+                        }
+
+                        .light-image {
+                            filter: invert(0); /* Add the desired filter for the light theme */
+                        }
+
+                        /* Dark Theme */
+                        .dark-link {
+                            color: #fff; /* Add the desired text color for the dark theme */
+                            background-color: transparent; /* Add the desired background color for the dark theme */
+                        }
+
+                        .dark-image {
+                            filter: invert(1); /* Add the desired filter for the dark theme */
+                        }
+
+                        
+                        .navbar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px;
+                    list-style-type: none;
+                }
+
+                .navbar li {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .navbar p, .navbar a {
+                    margin: 0;
+                    padding: 0;
+                    
+                    
+                }
+
+                .navbar img {
+                    max-height: 30px;
+                    max-width: 30px;
+                }
+
+                @media only screen and (max-width: 768px) {
+                    .navbar {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+
+                    .navbar li {
+                        margin: 5px 0;
+                    }
+                }
+
+
+
+
+                       ul {
+                            list-style-type: none;
+                        }
+                        .footer {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            padding: 20px;
+                        }
+
+                           .footer img {
+                            width: calc(100% / 8); 
+                            max-width: 200px; /* Adjust the max-width to your preference */
+                            height: auto;
+                        }
+
+
+                        .contact {
+
+                            text-align: center;
+                            margin: 20px 0;
+                        }
+
+                        .contact img {
+                            width: 15vw; 
+                            height: auto;
+                        }
+
+                        .contact p {
+                            margin: 10px 0;
+                        }
+
+                 .content-section {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
+
+                .image-container {
+                    position: relative;
+                }
+
+                .image-container img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .text-container {
+                    position: absolute;
+                    top: 50%;
+                    right: 10%;
+                    transform: translateY(-50%);
+                    max-width: 50%;
+                    padding: 20px;
+                    background-color: rgba(255, 255, 255, 0.8);
+                    text-align: left;
+                }
+
+                .text-container h2 {
+                    margin-top: 0;
+                }
+
+                @media only screen and (max-width: 768px) {
+                    .content-section {
+                        flex-direction: column;
+                    }
+
+                    .text-container {
+                        position: static;
+                        max-width: 100%;
+                        transform: none;
+                        margin-top: 20px;
+                        right: auto;
+                    }
+                }
+
+
+
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    gap: 20px;
+                    justify-content: center;
+                }
+
+                .tile {
+                    border: 1px solid #ddd;
+                    padding: 20px;
+                    text-align: center;
+                    cursor: pointer;
+                    word-wrap: break-word;
+                }
+
+                @media only screen and (min-width: 768px) {
+                    .gallery {
+                        grid-template-columns: repeat(3, minmax(200px, 1fr));
+                    }
+                }
+
+
+
+                .tile img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0,0,0,0.7);
+                }
+
+                .modal-content img {
+                    max-width: 100%;
+                    max-height: auto;
+                }
+
+
+                .modal-content {
+                    
+                    margin: 10% auto;
+                    padding: 20px;
+                    border: 1px solid #888;
+                    width: 80%;
+                }
+
+                .close {
+                    color: #aaa;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+
+                .close:hover,
+                .close:focus {
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+                
+                    body {
+                    font-family: Arial, sans-serif;
+                     overflow: auto;
+                }
+
+
+
+        
+    </style>
+    
+        <script>
+function toggleTheme() {
+    var body = document.body;
+    if (body.classList.contains('light-theme')) {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+    } else {
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+    }
+}     
+            
+    </script>
+    
+</head>
+<body class="light-theme">
+
+<footer class="footer" style="text-align: center;">
+    <img src="IMG/EBN_02.png" alt="logo EBN" style="display: block; margin: auto; width: 100%;
+    max-width: 200px; height: auto;">
+</footer> 
+    
+<nav>
+    <ul class="navbar">
+        <li>  <p>&nbsp;&nbsp;</p>  </li>
+        <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z" fill="url(#grad1)">
+                    <animate
+                        attributeName="fill"
+                        values="#ffffff;#000000;#ffffff"
+                        dur="2s"
+                        repeatCount="indefinite"
+                    /></path>
+        </svg>
+
+            <p>&nbsp;Lundi - Vendredi: 07.00 - 17.00</p>
+        </li>
+        <li>
+            <a href="tel:8198087468" class="light-link">
+                <img src="IMG/3_phone.png" alt="phone:(819) 808-7468" >
+            </a>
+            &nbsp;&nbsp;(819) 808-7468
+        </li>
+        <li>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!" class="light-link">
+                <img src="IMG/3_mail.png" alt="email us">
+            </a>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!"class="light-link">&nbsp;&nbsp;nbedard@ebnelectrique.com</a>
+        </li>
+        <li><a href="/" style="color:darkseagreen" class="dark-link light-link">🏠&nbsp;&nbsp;Accueil</a></li>
+        <li><a href="/contact" class="light-link">🕺&nbsp;&nbsp;Contact</a></li>
+        <li>   <a href="#" class="button" onclick="toggleTheme()">&nbsp;&nbsp;🌙&nbsp;&nbsp; </a></li>
+        <li>  <p>&nbsp;&nbsp;</p>  </li>
+    </ul>
+</nav>
+
+
+    
+    
+    
+    
+    
+    
+    <!-- Other content -->
+
+        <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/div1.png" alt="Image4">
+        </div>
+        <div class="text-container">
+            <h2>EBN électrique, c’est :</h2>
+            <ul><li> Une équipe d’électriciens qualifiés et dynamiques;</li>
+<li>Un service à la clientèle orienté vers la courtoisie et la fiabilité;</li>
+                <li>L’expertise et le respect des normes de l’industrie dans les secteurs:</li>
+                <li>Résidentiel, Commercial et Institutionnel;</li>
+<li>Des conseils personnalisés du début à la fin de votre projet;</li>
+<li>Service offert partout dans les Laurentides et bien plus!</li></ul>
+        </div>
+    </div>
+    
+    
+    
+        <div class="content-section">
+        <div class="image-container">
+            <img src="IMG/div2.png" alt="LOGO">
+        </div>
+        <div class="text-container">
+            <h2>Nous sommes là pour vous:</h2>
+            <p>EBN électrique est votre partenaire de choix pour vous conseiller et mener à terme votre projet selon vos attentes.</p>
+        <h2>Au plaisir de concrétiser votre projet!</h2>
+        </div>
+    </div>
+
+
+<div class="content-section">
+    <div class="image-container">
+        <img src="IMG/div3.png" alt="LOGO">
+    </div>
+    <a href="/contact">
+        <div class="text-container" style="background-color: rgba(255, 255, 255, 0.5);  border-radius: 10px">
+            <br><h2 style="">Nous contacter</h2>
+        </div>
+    </a>
+</div>
+
+    
+    
+<br><br>
+    <div class="gallery">
+    <div class="tile">
+        <img src="IMG/carou_branch1.jpeg" alt="Branchement 1">
+        <h3>Entrées électriques et panneaux</h3>
+        <p>Nous offrons l'ensemble des services...</p>
+    </div>
+    <!-- Add more tiles here -->
+        <div class="tile">
+        <img src="IMG/carou_chauffage1.png" alt="Chauffage 2">
+        <h3>Appareils de chauffage</h3>
+        <p>Plusieurs types d’appareils de ...</p>
+    </div>
+        
+        <div class="tile">
+        <img src="IMG/carou_gen1.jpeg" alt="Génératrice 1">
+        <h3>Génératrices</h3>
+        <p>Depuis quelques années, pour ...</p>
+    </div>
+        
+        
+          <div class="tile">
+        <img src="IMG/carou_divers_1.jpeg" alt="Branchement Divers 1">
+        <h3>Raccordements divers</h3>
+        <p>Les spas, thermopompes, fournaises...</p>
+    </div> 
+        
+          <div class="tile">
+        <img src="IMG/carou_lum1.png" alt="Éclairage 1">
+        <h3>Systèmes d’éclairage</h3>
+        <p>Nos conseils pourrons vous ...</p>
+    </div> 
+        
+             <div class="tile">
+         <img src="IMG/carou_radiant_1.jpeg" alt="Radiant 1">
+        <h3>Installation de plancher chauffant (radiant)</h3>
+        <p>Nous vous offrons une expertise ...</p>
+    </div>  
+        
+
+        
+</div>
+
+<div class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img src="IMG/carou_branch1.jpeg" alt="Branchement 1">
+        <img src="IMG/carou_branch2.jpeg" alt="Branchement 2">
+        <img src="IMG/carou_branch3.jpeg" alt="Branchement 3">
+        <img src="IMG/carou_branch4.jpeg" alt="Branchement 4">
+        <img src="IMG/carou_branch6.jpeg" alt="Branchement 6">
+        <h2>Entrées électriques et panneaux</h2>
+        <ul><li>Remplacement de panneau</li>
+<li>Entrée électrique aérienne</li>
+<li>Entrée électrique aérosouterraine</li>
+<li>Installation souterraine</li>
+<li>Entrée électrique temporaire</li>
+<li>Entrée d’une capacité de 200 A à 120/240 V</li>
+<li>Entrée d’une capacité de 320 A à 120/240 V</li>
+<li>Entrée d’une capacité de 400 A et plus à 120/240 V</li>
+<li>Entrée d’une capacité de 60 A et plus à 347/600 V</li></ul>
+    </div>
+        <div class="modal-content">
+        <img src="IMG/carou_chauffage2.jpeg" alt="Chauffage 1">
+        <img src="IMG/carou_chauffage1.png" alt="Chauffage 2">
+        <h2>Appareils de chauffage</h2>
+        <p>Plusieurs types d’appareils de chauffage électrique sont en vente et ceux-ci sont offerts dans une grande variété de couleurs afin qu’ils se fondent dans le décor de votre résidence ou de votre commerce.Noux offrons: plinthe chauffante conventionnelle, haut de gamme et compacte</p>
+        </div>
+    
+            <div class="modal-content">
+        <img src="IMG/carou_gen1.jpeg" alt="Génératrice 1">     
+        <h2>Génératrice</h2>
+        <p>Depuis quelques années, pour de nombreuses raisons, les pannes de courant sont de plus en plus fréquentes, et ce, même si Hydro-Québec s’efforce d’entretenir son réseau. Elles sont souvent causées par de grands vents, la neige ou le verglas. Pour parer à la situation, nous vous offrons des systèmes complets en fournitures et raccordements de groupes électrogènes.</p>
+        </div>
+    
+            <div class="modal-content">
+        <img src="IMG/carou_divers_1.jpeg" alt="Branchement Divers 1">
+        <img src="IMG/carou_divers_2.jpeg" alt="Branchement Divers 2">
+        <img src="IMG/carou_divers_3.jpeg" alt="Branchement Divers 3">
+        <img src="IMG/carou_divers_4.jpeg" alt="Branchement Divers 4">
+        <h2>Raccordements divers</h2>
+        <p>Nous effectuons les raccordements pour les Spas, les appareils à air conditionné, les thermopompes, les piscines, les fournaises, les bouillottes de plancher chauffant, les chauffe-eau à la demande ou les bornes de recharge pour véhicule électrique qui sont généralement fournis par d’autres quarts de métier.</p>
+        </div>
+    
+    <div class="modal-content">
+    <img src="IMG/carou_lum1.png" alt="Éclairage 1">
+    <img src="IMG/carou_lum2.png" alt="Éclairage 2">
+    <img src="IMG/carou_lum3.png" alt="Éclairage 3">
+    <img src="IMG/carou_lum4.png" alt="Éclairage 4">
+    <img src="IMG/carou_lum5.png" alt="Éclairage 5">
+    <img src="IMG/carou_lum6.png" alt="Éclairage 6">
+    <img src="IMG/carou_lum7.png" alt="Éclairage 7">
+    <img src="IMG/carou_lum8.png" alt="Éclairage 8">
+    <img src="IMG/carou_lum9.png" alt="Éclairage 9">
+    <img src="IMG/carou_lum10.png" alt="Éclairage 10">
+    <img src="IMG/carou_lum11.png" alt="Éclairage 11">
+        
+
+        <h2>Systèmes d’éclairage</h2>
+        <p>L’éclairage peut rehausser l’image et la valeur de votre maison ou de votre commerce, selon l’emplacement, le type d’éclairage (ampoule) ou le type de luminaire choisi. Nos conseils pourrons vous éclairer dans tous vos projets.</p>
+        </div>
+    
+    <div class="modal-content">
+    <img src="IMG/carou_radiant_1.jpeg" alt="Radiant 1">
+        <h2>Installation de plancher chauffant (radiant)</h2>
+        <p>Nous vous offrons une expertise pour l’installation de tous types de planchers chauffants. Nos électriciens pourront vous conseiller sur le système approprié et sur tous les aspects électriques selon le contexte d’utilisation, la grandeur des pièces et le coût énergétique de votre plancher chauffant.</p>
+        </div>
+
+    
+</div>
+<br><br>
+    
+    
+    
+    
+    
+    
+    
+     <ul class="navbar">
+        <li>  <p>&nbsp;&nbsp;</p>  </li>
+         <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z" fill="url(#grad1)">
+                    <animate
+                        attributeName="fill"
+                        values="#ffffff;#000000;#ffffff"
+                        dur="2s"
+                        repeatCount="indefinite"
+                    /></path>
+        </svg>
+
+            <p>&nbsp;Lundi - Vendredi: 07.00 - 17.00</p>
+        </li>
+        <li>
+            <a href="tel:8198087468" class="light-link">
+                <img src="IMG/3_phone.png" alt="phone:(819) 808-7468" >
+            </a>
+            &nbsp;&nbsp;(819) 808-7468
+        </li>
+        <li>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!" class="light-link">
+                <img src="IMG/3_mail.png" alt="email us">
+            </a>
+            <a href="mailto:nbedard@ebnelectrique.com?subject=Sousmission%20pour%20EBN%20électrique&body=Expliquer%20nous%20vos%20besoins,%20nous%20pouvons%20vous%20aider%20dans%20vos%20projet!"class="light-link">&nbsp;&nbsp;nbedard@ebnelectrique.com</a>
+        </li>
+        <li><a href="/" style="color:darkseagreen" class="dark-link light-link">🏠&nbsp;&nbsp;Accueil</a></li>
+        <li><a href="/contact" class="light-link">🕺&nbsp;&nbsp;Contact</a></li>
+        <li>  <p>&nbsp;&nbsp;</p>  </li>
+    </ul>
+    <footer class="footer" style="text-align: center;">
+    <img src="IMG/EBN_02.png" alt="logo EBN" style="display: block; margin: auto;width: 100%;
+    max-width: 200px; /* Adjust the max-width to your preference */
+    height: auto;">
+</footer>
+
+    <footer class="footer">
+        <img src="IMG/1_CCQ.png" alt="CCQ">
+        <img src="IMG/1_CMEQ.png" alt="CMEQ">
+        <img src="IMG/1_csst.png" alt="CSST">
+        <img src="IMG/1_HydroQc.png" alt="HydroQc">
+        <img src="IMG/1_regiebatiment.png" alt="Regie Batiment">
+        <img src="IMG/1_securitepublique.png" alt="Securite Publique">
+    </footer>
+
+    
+    
+    <script>
+        // Get the modal
+var modal = document.querySelector('.modal');
+
+// Get the <span> element that closes the modal
+var span = document.querySelector('.close');
+
+// Function to open the modal
+function openModal() {
+    modal.style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// When the user clicks on a tile, open the modal
+var tiles = document.querySelectorAll('.tile');
+tiles.forEach(function(tile) {
+    tile.addEventListener('click', openModal);
+});
+
+// When the user clicks on <span> (x), close the modal
+span.addEventListener('click', closeModal);
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+        
+    </script>
+    
+    
+    
+
+</body>
+</html>
